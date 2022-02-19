@@ -27,5 +27,5 @@
         "forceConsistentCasingInFileNames": true,
         "skipLibCheck": true
 	},
-	"include": ["src/**/*.ts", "test-workspace/jsZip.ts"]
+	"include": ["src/**/*.ts"]
 }

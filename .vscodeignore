@@ -9,9 +9,17 @@ src/**
 test-workspace
 
 node_modules/**/@types
-node_modules/**/*.md
-node_modules/**/LICENSE
-node_modules/**/LICENSE.txt
-node_modules/**/*.LICENSE
-node_modules/**/*.map.js
 node_modules/**/.github
+node_modules/**/*.md
+node_modules/**/*.markdown
+node_modules/**/.travis.yml
+node_modules/**/Makefile
+node_modules/**/LICENSE
+node_modules/**/license
+node_modules/**/LICENSE.txt
+node_modules/**/.editorconfig
+node_modules/**/.*rc
+node_modules/**/.*ignore
+node_modules/**/*.LICENSE
+node_modules/**/*.test.js
+node_modules/**/*.map.js

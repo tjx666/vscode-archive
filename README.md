@@ -6,5 +6,4 @@
 
 ## TODOs
 
-- [x] decompress .asar
 - [ ] compress .zip, .vsix, .crx, .asar
