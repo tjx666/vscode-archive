@@ -2,7 +2,7 @@
     "name": "vscode-archive",
     "displayName": "vscode-archive",
     "description": "compress/decompress .zip/.vsix/.crx/.asar",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "publisher": "YuTengjing",
     "engines": {
         "vscode": "^1.64.0"
@@ -45,7 +45,7 @@
         }
     },
     "scripts": {
-        "vscode:prepublish": "npm run compile",
+        "vscode:prepublish": "rm -rf ./out && npm run compile",
         "compile": "tsc -p ./",
         "watch": "tsc -watch -p ./",
         "pretest": "npm run compile && npm run lint",
