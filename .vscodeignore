@@ -7,3 +7,11 @@ src/**
 **/*.map
 **/*.ts
 test-workspace
+
+node_modules/**/@types
+node_modules/**/*.md
+node_modules/**/LICENSE
+node_modules/**/LICENSE.txt
+node_modules/**/*.LICENSE
+node_modules/**/*.map.js
+node_modules/**/.github

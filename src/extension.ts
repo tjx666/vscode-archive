@@ -3,8 +3,6 @@ import path from 'path';
 import { decompress } from './decompress';
 
 export function activate(context: vscode.ExtensionContext) {
-    console.log('Congratulations, your extension "vscode-archive" is now active!');
-
     const disposable = vscode.commands.registerCommand(
         'vscode-archive.decompress',
         (archiveUri: Uri) => {
@@ -13,7 +11,11 @@ export function activate(context: vscode.ExtensionContext) {
                 archivePath,
                 `../${path.basename(archivePath, path.extname(archivePath))}`,
             );
-            decompress(archivePath, dest);
+            try {
+                decompress(archivePath, dest);
+            } catch (error: any) {
+                vscode.window.showErrorMessage(error);
+            }
         },
     );
 

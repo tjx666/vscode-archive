@@ -8,13 +8,16 @@
     "extends": ["plugin:@typescript-eslint/recommended", "prettier"],
     "plugins": ["@typescript-eslint"],
     "rules": {
+        "@typescript-eslint/ban-ts-comment": "off",
         "@typescript-eslint/naming-convention": "warn",
+        "@typescript-eslint/no-explicit-any": "off",
+        "@typescript-eslint/no-non-null-assertion": "off",
         "@typescript-eslint/semi": "warn",
+        
         "curly": "warn",
         "eqeqeq": "warn",
         "no-throw-literal": "warn",
-        "semi": "off",
-        "@typescript-eslint/ban-ts-comment": "off"
+        "semi": "off"
     },
     "ignorePatterns": ["out", "dist", "**/*.d.ts"]
 }

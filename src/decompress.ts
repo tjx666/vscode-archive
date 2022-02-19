@@ -1,13 +1,12 @@
-import { createReadStream } from 'fs';
 import fs from 'fs/promises';
 import path from 'path';
-import unzipper from 'unzipper';
+import asar from 'asar';
 
 import { pathExists } from './fsUtils';
-import unzipCrx from './unzipCrx';
+import unzip from './unzip';
 
 export async function decompress(archivePath: string, dest: string) {
-    const archiveExt = path.extname(archivePath);
+    const archiveExt = path.extname(archivePath).toLowerCase();
     const destExt = path.extname(dest);
     const tempFile = path.resolve(
         path.dirname(dest),
@@ -24,30 +23,15 @@ export async function decompress(archivePath: string, dest: string) {
         await fs.rm(tempFile, { recursive: true });
     }
 
-    if (archiveExt.toLowerCase() === '.crx') {
-        try {
-            await unzipCrx(archivePath, tempFile);
-        } catch(error) {
-            await clear();
-            return;
+    try {
+        if (archiveExt === '.asar') {
+            asar.extractAll(archivePath, tempFile);
+        } else {
+            await unzip(archivePath, tempFile);
         }
-    } else {
-        const extractTask = new Promise((resolve, reject) => {
-            const extractor = unzipper.Extract({ path: tempFile });
-
-            extractor.on('error', async (error) => {
-                await clear();
-                reject(error);
-            });
-
-            extractor.on('close', function () {
-                resolve(undefined);
-            });
-
-            createReadStream(archivePath).pipe(extractor);
-        });
-
-        await extractTask;
+    } catch (error) {
+        await clear();
+        throw error;
     }
 
     await fs.rename(tempFile, dest);
