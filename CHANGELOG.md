@@ -1,5 +1,11 @@
 # Change Log
 
+## [0.1.2] 2022-04-30
+
+### Added
+
+- extension icon
+
 ## [0.1.1] 2022-02-20
 
 ### Changed
