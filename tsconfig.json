@@ -1,13 +1,13 @@
 {
-	"compilerOptions": {
-		"module": "commonjs",
-		"target": "ES2021",
-		"outDir": "out",
+    "compilerOptions": {
+        "module": "commonjs",
+        "target": "ES2022",
+        "outDir": "out",
 
-		"sourceMap": true,
-		"rootDir": "src",
+        "sourceMap": true,
+        "rootDir": "src",
 
-		/* Strict Type-Checking Options */
+        /* Strict Type-Checking Options */
         "strict": true,
 
         /* Additional Checks */
@@ -15,7 +15,7 @@
         "noFallthroughCasesInSwitch": true,
 
         /* Module Resolution Options */
-        "moduleResolution": "node",
+        "moduleResolution": "NodeNext",
         "esModuleInterop": true,
         "resolveJsonModule": true,
 
@@ -26,6 +26,6 @@
         /* Advanced Options */
         "forceConsistentCasingInFileNames": true,
         "skipLibCheck": true
-	},
-	"include": ["src/**/*.ts"]
+    },
+    "include": ["src/**/*.ts"]
 }
