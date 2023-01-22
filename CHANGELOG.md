@@ -1,5 +1,12 @@
 # Change Log
 
+## [0.1.3] 2023-01-22
+
+### Changed
+
+- upgrade deps
+- bundle extension by esbuild
+
 ## [0.1.2] 2022-04-30
 
 ### Added
