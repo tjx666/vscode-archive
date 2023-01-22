@@ -6,7 +6,7 @@
     "publisher": "YuTengjing",
     "icon": "icon.png",
     "engines": {
-        "vscode": "^1.66.0"
+        "vscode": "^1.74.0"
     },
     "categories": [
         "Other"
@@ -46,12 +46,12 @@
         }
     },
     "scripts": {
-        "vscode:prepublish": "rm -rf ./out && npm run compile",
-        "compile": "tsc -p ./",
-        "watch": "tsc -watch -p ./",
-        "pretest": "npm run compile && npm run lint",
-        "lint": "eslint src --ext ts",
-        "test": "node ./out/test/runTest.js",
+        "vscode:prepublish": "pnpm esbuild:base --minify",
+        "preinstall": "npx only-allow pnpm",
+        "clear": "rimraf ./out",
+        "esbuild:base": "esbuild ./src/extension.ts --bundle --outfile=out/extension.js --external:vscode --external:original-fs --format=cjs --platform=node",
+        "esbuild:watch": "pnpm esbuild:base --sourcemap --watch",
+        "compile:test": "pnpm clear && tsc -p ./test/tsconfig.json",
         "package": "vsce package --no-dependencies",
         "publish": "vsce publish --no-dependencies"
     },
@@ -68,6 +68,7 @@
         "@typescript-eslint/eslint-plugin": "5.48.2",
         "@typescript-eslint/parser": "5.48.2",
         "@vscode/test-electron": "2.2.2",
+        "esbuild": "0.17.0",
         "eslint": "8.32.0",
         "eslint-config-prettier": "8.6.0",
         "glob": "8.1.0",
