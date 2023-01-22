@@ -1,5 +1,5 @@
 import vscode, { Uri } from 'vscode';
-import path from 'path';
+import path from 'node:path';
 import { decompress } from './decompress';
 
 export function activate(context: vscode.ExtensionContext) {

@@ -1,5 +1,5 @@
-import fs from 'fs/promises';
-import { constants as FS_CONSTANTS } from 'fs';
+import fs from 'node:fs/promises';
+import { constants as FS_CONSTANTS } from 'node:fs';
 
 function pathExists(path: string) {
     return fs
