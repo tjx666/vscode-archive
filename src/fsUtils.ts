@@ -1,11 +1,9 @@
-import fs from 'node:fs/promises';
 import { constants as FS_CONSTANTS } from 'node:fs';
+import fs from 'node:fs/promises';
 
-function pathExists(path: string) {
+export async function pathExists(path: string) {
     return fs
         .access(path, FS_CONSTANTS.F_OK)
         .then(() => true)
         .catch(() => false);
 }
-
-export { pathExists };

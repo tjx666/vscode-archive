@@ -1,5 +1,8 @@
-import vscode, { Uri } from 'vscode';
 import path from 'node:path';
+
+import type { Uri } from 'vscode';
+import vscode from 'vscode';
+
 import { decompress } from './decompress';
 
 export function activate(context: vscode.ExtensionContext) {

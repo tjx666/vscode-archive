@@ -1,5 +1,6 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
+
 import jszip from 'jszip';
 
 import { pathExists } from './fsUtils';
@@ -13,6 +14,7 @@ function crxToZip(arraybuffer: ArrayBuffer) {
     function calcLength(a: number, b: number, c: number, d: number) {
         let length = 0;
 
+        // eslint-disable-next-line unicorn/prefer-math-trunc
         length += a << 0;
         length += b << 8;
         length += c << 16;

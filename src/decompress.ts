@@ -1,5 +1,6 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
+
 import asar from 'asar';
 
 import { pathExists } from './fsUtils';
