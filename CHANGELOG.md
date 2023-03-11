@@ -1,5 +1,11 @@
 # Change Log
 
+## [0.1.4] 2023-03-11
+
+### Changed
+
+- add usage gif
+
 ## [0.1.3] 2023-01-22
 
 ### Changed
