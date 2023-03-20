@@ -1,5 +1,12 @@
 # Change Log
 
+## [0.1.6] 2023-03-20
+
+### Changed
+
+- reduce extension size
+- adjust esbuild target
+
 ## [0.1.5] 2023-03-20
 
 ### Changed
