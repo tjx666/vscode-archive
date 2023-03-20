@@ -52,26 +52,34 @@
     "scripts": {
         "vscode:prepublish": "pnpm esbuild:base --minify",
         "preinstall": "npx only-allow pnpm",
-        "clear": "rimraf ./out",
-        "esbuild:base": "esbuild ./src/extension.ts --bundle --outfile=out/extension.js --external:vscode --external:original-fs --format=cjs --platform=node",
+        "postinstall": "stale-dep -u",
+        "clean": "rimraf -rf ./out",
+        "esbuild:base": "stale-dep && esbuild ./src/extension.ts --bundle --outfile=out/extension.js --external:vscode --external:original-fs --format=cjs --platform=node",
         "esbuild:watch": "pnpm esbuild:base --sourcemap --watch",
-        "compile:test": "pnpm clear && tsc -p ./test/tsconfig.json",
+        "esbuild:analyze": "pnpm esbuild:base --minify --metafile=meta.json && esbuild-visualizer --metadata ./meta.json --open",
+        "lint": "eslint src --ext ts",
         "package": "vsce package --no-dependencies",
-        "publish": "vsce publish --no-dependencies"
+        "release": "bumpp -c \"release: v%s\" package.json",
+        "publish:vs-marketplace": "vsce publish --no-dependencies",
+        "publish:open-vsx": "ovsx publish --no-dependencies"
     },
     "dependencies": {
         "asar": "3.2.0",
         "jszip": "3.10.1"
     },
     "devDependencies": {
-        "@types/node": "18.15.0",
+        "@types/node": "18.15.3",
         "@types/unzipper": "0.10.5",
         "@types/vscode": "1.76.0",
-        "@yutengjing/eslint-config-typescript": "^0.2.5",
+        "@vscode/vsce": "2.18.0",
+        "@yutengjing/eslint-config-typescript": "^0.2.8",
         "@yutengjing/prettier-config": "^0.0.1",
-        "esbuild": "0.17.11",
+        "bumpp": "9.0.0",
+        "esbuild": "0.17.12",
         "eslint": "8.36.0",
-        "prettier": "2.8.4",
-        "typescript": "4.9.5"
+        "ovsx": "0.8.0",
+        "prettier": "2.8.5",
+        "stale-dep": "0.6.0",
+        "typescript": "5.0.2"
     }
 }
