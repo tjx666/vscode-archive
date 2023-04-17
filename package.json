@@ -1,12 +1,12 @@
 {
     "name": "vscode-archive",
     "displayName": "Vscode Archive",
-    "description": "compress/decompress .zip/.vsix/.crx/.asar",
+    "description": "compress/decompress .zip/.vsix/.crx/.asar/.tgz/.gzip/.tar",
     "version": "0.1.6",
     "publisher": "YuTengjing",
     "icon": "./assets/logo.png",
     "engines": {
-        "vscode": "^1.76.0"
+        "vscode": "^1.77.0"
     },
     "categories": [
         "Other"
@@ -18,7 +18,10 @@
         "unzip",
         "crx",
         "vsix",
-        "asar"
+        "asar",
+        "tgz",
+        "gzip",
+        "tar"
     ],
     "repository": {
         "type": "git",
@@ -33,10 +36,16 @@
             }
         ],
         "menus": {
+            "commandPalette": [
+                {
+                    "command": "vscode-archive.decompress",
+                    "when": "false"
+                }
+            ],
             "explorer/context": [
                 {
                     "command": "vscode-archive.decompress",
-                    "when": "!explorerResourceIsFolder && resourceFilename =~ /.+\\.(zip|vsix|crx|asar)$/i",
+                    "when": "!explorerResourceIsFolder && resourceFilename =~ /.+\\.(zip|vsix|crx|asar|tgz|gzip|tar)$/i",
                     "group": "navigation@0"
                 }
             ]
@@ -64,22 +73,23 @@
         "publish:open-vsx": "ovsx publish --no-dependencies"
     },
     "dependencies": {
-        "asar": "3.2.0",
-        "jszip": "3.10.1"
+        "asar": "^3.2.0",
+        "compressing": "^1.9.0",
+        "jszip": "^3.10.1"
     },
     "devDependencies": {
-        "@types/node": "18.15.3",
-        "@types/unzipper": "0.10.5",
-        "@types/vscode": "1.76.0",
-        "@vscode/vsce": "2.18.0",
+        "@types/node": "^18.15.11",
+        "@types/unzipper": "^0.10.5",
+        "@types/vscode": "^1.77.0",
+        "@vscode/vsce": "^2.19.0",
         "@yutengjing/eslint-config-typescript": "^0.2.8",
         "@yutengjing/prettier-config": "^0.0.1",
-        "bumpp": "9.0.0",
-        "esbuild": "0.17.12",
-        "eslint": "8.36.0",
-        "ovsx": "0.8.0",
-        "prettier": "2.8.5",
-        "stale-dep": "0.6.0",
-        "typescript": "5.0.2"
+        "bumpp": "^9.1.0",
+        "esbuild": "^0.17.17",
+        "eslint": "^8.38.0",
+        "ovsx": "^0.8.0",
+        "prettier": "^2.8.7",
+        "stale-dep": "^0.6.0",
+        "typescript": "^5.0.4"
     }
 }

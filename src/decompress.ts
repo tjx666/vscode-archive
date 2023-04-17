@@ -2,6 +2,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 
 import asar from 'asar';
+import compressing from 'compressing';
 
 import { pathExists } from './fsUtils';
 import unzip from './unzip';
@@ -25,10 +26,30 @@ export async function decompress(archivePath: string, dest: string) {
     }
 
     try {
-        if (archiveExt === '.asar') {
-            asar.extractAll(archivePath, tempFile);
-        } else {
-            await unzip(archivePath, tempFile);
+        switch (archiveExt) {
+            case '.asar': {
+                asar.extractAll(archivePath, tempFile);
+                break;
+            }
+            case '.zp': {
+                await compressing.zip.decompress(archivePath, tempFile);
+                break;
+            }
+            case '.tgz': {
+                await compressing.tgz.decompress(archivePath, tempFile);
+                break;
+            }
+            case '.gzip': {
+                await compressing.gzip.decompress(archivePath, tempFile);
+                break;
+            }
+            case '.tar': {
+                await compressing.tar.decompress(archivePath, tempFile);
+                break;
+            }
+            default: {
+                await unzip(archivePath, tempFile);
+            }
         }
     } catch (error) {
         await clear();
