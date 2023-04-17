@@ -1,5 +1,11 @@
 # Change Log
 
+## [0.2.0] 2023-04-18
+
+### Added
+
+- support decompress .tgz/.gzip/.tar
+
 ## [0.1.6] 2023-03-20
 
 ### Changed

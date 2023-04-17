@@ -1,6 +1,6 @@
 # VSCode archive
 
-compress/decompress .zip/.vsix/.crx/.asar
+compress/decompress .zip/.vsix/.crx/.asar/.tgz/.gzip/.tar
 
 ## Usage
 
@@ -10,13 +10,8 @@ just right click the file you want to decompress, and click `Decompress Here`
 
 ## Feature
 
-- decompress .zip, .vsix, .crx(v3), .asar
+- decompress .zip, .vsix, .crx(v3), .asar, .tgz, .gzip, .tar
 
 ## TODOs
 
-- [ ] compress .zip, .vsix, .crx, .asar
-
-## Known issues
-
-- fileName garbled when zip is compressed by gbk encoding
-- can not decompress very large archive
+- [ ] compress to .zip, .vsix, .crx, .asar, .tgz, .gzip, .tar
