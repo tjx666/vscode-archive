@@ -2,7 +2,7 @@
     "name": "vscode-archive",
     "displayName": "Vscode Archive",
     "description": "compress/decompress .zip/.vsix/.crx/.asar/.tgz/.gzip/.tar",
-    "version": "0.1.6",
+    "version": "0.2.0",
     "publisher": "YuTengjing",
     "icon": "./assets/logo.png",
     "engines": {
