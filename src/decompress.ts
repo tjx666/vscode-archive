@@ -4,11 +4,12 @@ import path from 'node:path';
 import asar from 'asar';
 import compressing from 'compressing';
 
+import { decompressCrx } from './decompressCrx';
 import { pathExists } from './fsUtils';
-import unzip from './unzip';
 
 export async function decompress(archivePath: string, dest: string) {
-    const archiveExt = path.extname(archivePath).toLowerCase();
+    // .zip -> zip
+    const archiveExt = path.extname(archivePath).toLowerCase().slice(1);
     const destExt = path.extname(dest);
     const tempFile = path.resolve(
         path.dirname(dest),
@@ -27,29 +28,25 @@ export async function decompress(archivePath: string, dest: string) {
 
     try {
         switch (archiveExt) {
-            case '.asar': {
-                asar.extractAll(archivePath, tempFile);
-                break;
-            }
-            case '.zp': {
+            case 'zip':
+            case 'vsix':
                 await compressing.zip.decompress(archivePath, tempFile);
                 break;
-            }
-            case '.tgz': {
+            case 'asar':
+                asar.extractAll(archivePath, tempFile);
+                break;
+            case 'tgz':
                 await compressing.tgz.decompress(archivePath, tempFile);
                 break;
-            }
-            case '.gzip': {
+            case 'gzip':
                 await compressing.gzip.decompress(archivePath, tempFile);
                 break;
-            }
-            case '.tar': {
+            case 'tar':
                 await compressing.tar.decompress(archivePath, tempFile);
                 break;
-            }
-            default: {
-                await unzip(archivePath, tempFile);
-            }
+            // crx
+            default:
+                await decompressCrx(archivePath, tempFile);
         }
     } catch (error) {
         await clear();

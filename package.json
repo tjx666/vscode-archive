@@ -33,12 +33,64 @@
             {
                 "command": "vscode-archive.decompress",
                 "title": "Decompress Here"
+            },
+            {
+                "command": "vscode-archive.compressToZip",
+                "title": "zip"
+            },
+            {
+                "command": "vscode-archive.compressToAsar",
+                "title": "asar"
+            },
+            {
+                "command": "vscode-archive.compressToGzip",
+                "title": "gzip"
+            },
+            {
+                "command": "vscode-archive.compressToTar",
+                "title": "tar"
+            },
+            {
+                "command": "vscode-archive.compressToTgz",
+                "title": "tgz"
+            },
+            {
+                "command": "vscode-archive.compressToVsix",
+                "title": "vsix"
             }
         ],
         "menus": {
             "commandPalette": [
                 {
                     "command": "vscode-archive.decompress",
+                    "when": "false"
+                },
+                {
+                    "command": "vscode-archive.decompress",
+                    "when": "false"
+                },
+                {
+                    "command": "vscode-archive.compressToZip",
+                    "when": "false"
+                },
+                {
+                    "command": "vscode-archive.compressToAsar",
+                    "when": "false"
+                },
+                {
+                    "command": "vscode-archive.compressToGzip",
+                    "when": "false"
+                },
+                {
+                    "command": "vscode-archive.compressToTar",
+                    "when": "false"
+                },
+                {
+                    "command": "vscode-archive.compressToTgz",
+                    "when": "false"
+                },
+                {
+                    "command": "vscode-archive.compressToVsix",
                     "when": "false"
                 }
             ],
@@ -47,9 +99,48 @@
                     "command": "vscode-archive.decompress",
                     "when": "!explorerResourceIsFolder && resourceFilename =~ /.+\\.(zip|vsix|crx|asar|tgz|gzip|tar)$/i",
                     "group": "navigation@0"
+                },
+                {
+                    "submenu": "vscode-archive.compress",
+                    "group": "7_modification@0"
+                }
+            ],
+            "vscode-archive.compress": [
+                {
+                    "command": "vscode-archive.compressToZip",
+                    "group": "compress@0"
+                },
+                {
+                    "command": "vscode-archive.compressToAsar",
+                    "group": "compress@1",
+                    "when": "explorerResourceIsFolder"
+                },
+                {
+                    "command": "vscode-archive.compressToGzip",
+                    "group": "compress@3",
+                    "when": "!explorerResourceIsFolder"
+                },
+                {
+                    "command": "vscode-archive.compressToTar",
+                    "group": "compress@4"
+                },
+                {
+                    "command": "vscode-archive.compressToTgz",
+                    "group": "compress@5"
+                },
+                {
+                    "command": "vscode-archive.compressToVsix",
+                    "group": "compress@6",
+                    "when": "explorerResourceIsFolder"
                 }
             ]
-        }
+        },
+        "submenus": [
+            {
+                "id": "vscode-archive.compress",
+                "label": "Compress"
+            }
+        ]
     },
     "eslintConfig": {
         "extends": "@yutengjing/eslint-config-typescript",

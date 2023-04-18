@@ -10,7 +10,7 @@ import { pathExists } from './fsUtils';
  * https://github.com/Rob--W/crxviewer/blob/master/src/lib/crx-to-zip.js
  * Credits for the original function go to Rob--W
  */
-function crxToZip(arraybuffer: ArrayBuffer) {
+function crxToZip(buffer: Buffer) {
     function calcLength(a: number, b: number, c: number, d: number) {
         let length = 0;
 
@@ -22,14 +22,12 @@ function crxToZip(arraybuffer: ArrayBuffer) {
         return length;
     }
     // Definition of crx format: http://developer.chrome.com/extensions/crx.html
-    const view = new Uint8Array(arraybuffer);
+    const view = new Uint8Array(buffer);
 
     // 50 4b 03 04
     if (view[0] === 80 && view[1] === 75 && view[2] === 3 && view[3] === 4) {
         console.warn('Input is not a CRX file, but a ZIP file.');
-        const buffer = Buffer.from(arraybuffer);
-
-        return Uint8Array.from(buffer).buffer;
+        return buffer;
     }
 
     // 43 72 32 34
@@ -61,20 +59,13 @@ function crxToZip(arraybuffer: ArrayBuffer) {
     }
 
     // Create a new view for the existing buffer, and wrap it in a Blob object.
-    const buffer = Buffer.from(new Uint8Array(arraybuffer, zipStartOffset));
-
-    return Uint8Array.from(buffer).buffer;
+    return Buffer.from(buffer, zipStartOffset);
 }
 
-export default async function unzip(archivePath: string, dest?: string) {
-    const filePath = path.resolve(archivePath);
+export async function decompressCrx(archivePath: string, dest: string) {
     const extname = path.extname(archivePath);
-    const basename = path.basename(archivePath, extname);
-    const dirname = path.dirname(archivePath);
-    dest ??= path.resolve(dirname, basename);
-
     return fs
-        .readFile(filePath)
+        .readFile(archivePath)
         .then((buf) => jszip.loadAsync(extname.toLowerCase() === '.crx' ? crxToZip(buf) : buf))
         .then((zip) => {
             const zipFileKeys = Object.keys(zip.files);
