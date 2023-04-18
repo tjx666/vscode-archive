@@ -1,5 +1,11 @@
 # Change Log
 
+## [0.3.1] 2023-04-19
+
+### Changed
+
+- add thanks and my extension recommendation parts to README
+
 ## [0.3.0] 2023-04-19
 
 ### Added
