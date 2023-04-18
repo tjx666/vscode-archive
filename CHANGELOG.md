@@ -1,5 +1,11 @@
 # Change Log
 
+## [0.3.0] 2023-04-19
+
+### Added
+
+- support compress to .zip, .vsix, .asar, .tgz, .gzip, .tar
+
 ## [0.2.0] 2023-04-18
 
 ### Added

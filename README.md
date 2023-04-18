@@ -1,17 +1,17 @@
 # VSCode archive
 
-compress/decompress .zip/.vsix/.crx/.asar/.tgz/.gzip/.tar
-
-## Usage
-
-just right click the file you want to decompress, and click `Decompress Here`
-
-![usage](https://github.com/tjx666/vscode-archive/blob/main/assets/usage.gif?raw=true)
+compress/decompress .zip/.vsix/.crx(v3)/.asar/.tgz/.gzip/.tar
 
 ## Feature
 
-- decompress .zip, .vsix, .crx(v3), .asar, .tgz, .gzip, .tar
+### decompress
 
-## TODOs
+decompress .zip, .vsix, .crx(v3), .asar, .tgz, .gzip, .tar
 
-- [ ] compress to .zip, .vsix, .crx, .asar, .tgz, .gzip, .tar
+![decompress](https://github.com/tjx666/vscode-archive/blob/main/assets/decompress.gif?raw=true)
+
+### compress
+
+compress to .zip, .vsix, .asar, .tgz, .gzip, .tar
+
+![compress](https://github.com/tjx666/vscode-archive/blob/main/assets/compress.gif?raw=true)
