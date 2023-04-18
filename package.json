@@ -12,10 +12,11 @@
         "Other"
     ],
     "keywords": [
+        "archive",
         "compress",
         "decompress",
-        "zip",
         "unzip",
+        "zip",
         "crx",
         "vsix",
         "asar",

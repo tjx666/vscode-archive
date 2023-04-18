@@ -14,7 +14,7 @@ decompress .zip, .vsix, .crx(v3), .asar, .tgz, .gzip, .tar
 
 compress to .zip, .vsix, .asar, .tgz, .gzip, .tar
 
-![compress](https://github.com/tjx666/vscode-archive/blob/main/assets/compress.gif?raw=true)
+![compress](https://github.com/tjx666/vscode-archive/blob/main/assets/compress.png?raw=true)
 
 ## Thanks
 
