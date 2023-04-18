@@ -27,7 +27,6 @@ compress to .zip, .vsix, .asar, .tgz, .gzip, .tar
 - [Neo File Utils](https://github.com/tjx666/vscode-neo-file-utils)
 - [VSCode FE Helper](https://github.com/tjx666/vscode-fe-helper)
 - [Better Colorizer](https://github.com/tjx666/better-colorizer)
-- [VSCode archive](https://github.com/tjx666/vscode-archive)
 - [Modify File Warning](https://github.com/tjx666/modify-file-warning)
 - [Power Edit](https://github.com/tjx666/power-edit)
 - [Adobe Extension Development Tools](https://github.com/tjx666/vscode-adobe-extension-devtools)

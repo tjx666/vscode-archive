@@ -1,5 +1,11 @@
 # Change Log
 
+## [0.3.2] 2023-04-19
+
+### Fixed
+
+- fix compress usage screenshot link
+
 ## [0.3.1] 2023-04-19
 
 ### Changed
