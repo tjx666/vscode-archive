@@ -15,6 +15,8 @@
         "archive",
         "compress",
         "decompress",
+        "chrome extension",
+        "firefox extension",
         "unzip",
         "zip",
         "crx",

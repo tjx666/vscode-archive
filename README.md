@@ -20,6 +20,10 @@ compress to .zip, .vsix, .asar, .tgz, .gzip, .tar
 
 - [compressing](https://github.com/node-modules/compressing) provide easy to used api for compress/decompress
 
+## TODO
+
+- [ ] log compress rate and file count
+
 ## My extensions
 
 - [Open in External App](https://github.com/tjx666/open-in-external-app)
