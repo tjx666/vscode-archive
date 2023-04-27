@@ -1,5 +1,12 @@
 # Change Log
 
+## [0.4.0] 2023-04-28
+
+### Added
+
+- support decompress/compress br
+- log decompress/compress info
+
 ## [0.3.2] 2023-04-19
 
 ### Fixed

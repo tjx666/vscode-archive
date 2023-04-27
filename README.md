@@ -1,18 +1,18 @@
 # VSCode archive
 
-compress/decompress .zip/.vsix/.crx(v3)/.asar/.tgz/.gzip/.tar
+compress/decompress .zip/.vsix/.crx(v3)/.asar/.tgz/.gzip/.br/.tar
 
 ## Feature
 
 ### decompress
 
-decompress .zip, .vsix, .crx(v3), .asar, .tgz, .gzip, .tar
+decompress .zip, .vsix, .crx(v3), .asar, .tgz, .gzip, .br, .tar
 
 ![decompress](https://github.com/tjx666/vscode-archive/blob/main/assets/decompress.gif?raw=true)
 
 ### compress
 
-compress to .zip, .vsix, .asar, .tgz, .gzip, .tar
+compress to .zip, .vsix, .asar, .tgz, .gzip, .br, .tar
 
 ![compress](https://github.com/tjx666/vscode-archive/blob/main/assets/compress.png?raw=true)
 
@@ -22,13 +22,14 @@ compress to .zip, .vsix, .asar, .tgz, .gzip, .tar
 
 ## TODO
 
-- [ ] log compress rate and file count
+- [ ] 7-zip decompress/compress
 
 ## My extensions
 
 - [Open in External App](https://github.com/tjx666/open-in-external-app)
 - [Package Manager Enhancer](https://github.com/tjx666/package-manager-enhancer)
 - [Neo File Utils](https://github.com/tjx666/vscode-neo-file-utils)
+- [Reload Can Solve Any Problems](https://github.com/tjx666/reload-can-solve-any-problems)
 - [VSCode FE Helper](https://github.com/tjx666/vscode-fe-helper)
 - [Better Colorizer](https://github.com/tjx666/better-colorizer)
 - [Modify File Warning](https://github.com/tjx666/modify-file-warning)
