@@ -4,8 +4,12 @@ import asar from 'asar';
 import compressing from 'compressing';
 
 import { decompressCrx } from './decompressCrx';
+import { analyzeArchive } from './fsUtils';
+import { logger } from './logger';
 
 export async function decompress(archivePath: string, dest: string) {
+    logger.info(`decompress from ${archivePath} to ${dest}`);
+
     // .zip -> zip
     const archiveExt = path.extname(archivePath).toLowerCase().slice(1);
     switch (archiveExt) {
@@ -29,4 +33,6 @@ export async function decompress(archivePath: string, dest: string) {
             await decompressCrx(archivePath, dest);
             break;
     }
+
+    logger.info(`decompress out ${await analyzeArchive(dest, archivePath)}`);
 }

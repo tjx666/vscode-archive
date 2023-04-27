@@ -1,9 +1,72 @@
 import { constants as FS_CONSTANTS } from 'node:fs';
+import type FS from 'node:fs';
 import fs from 'node:fs/promises';
+import path from 'node:path';
+
+import prettyBytes from 'pretty-bytes';
 
 export async function pathExists(path: string) {
     return fs
         .access(path, FS_CONSTANTS.F_OK)
         .then(() => true)
         .catch(() => false);
+}
+
+/**
+ * https://github.com/microsoft/vscode/issues/143393#issuecomment-1047518447
+ */
+export async function getFileStats(filePath: string) {
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    const originalFs = require('original-fs') as typeof FS;
+    return new Promise<FS.Stats>((resolve, reject) => {
+        originalFs.lstat(filePath, (err, stats) => {
+            if (err) reject(err);
+            resolve(stats);
+        });
+    });
+}
+
+interface FileInfo {
+    count: number;
+    size: number;
+}
+
+export async function getFileInfo(filePath: string): Promise<FileInfo> {
+    const stats = await getFileStats(filePath);
+    const fileInfo: FileInfo = {
+        count: 1,
+        size: stats.size,
+    };
+
+    if (!stats.isDirectory()) {
+        return fileInfo;
+    }
+
+    const childFiles = await fs.readdir(filePath);
+    const childFileInfoList = await Promise.all(
+        childFiles.map(async (childFileName) => {
+            return getFileInfo(path.resolve(filePath, childFileName));
+        }),
+    );
+    for (const childFileInfo of childFileInfoList) {
+        fileInfo.count += childFileInfo.count;
+        fileInfo.size += childFileInfo.size;
+    }
+
+    return fileInfo;
+}
+
+export async function analyzeArchive(originalPath: string, archivePath: string) {
+    const [originalFileInfo, archiveFileInfo] = await Promise.all([
+        getFileInfo(originalPath),
+        getFileInfo(archivePath),
+    ]);
+
+    const compressRate = (originalFileInfo.size - archiveFileInfo.size) / originalFileInfo.size;
+
+    return [
+        `${originalFileInfo.count} files`,
+        `${prettyBytes(originalFileInfo.size)} -> ${prettyBytes(archiveFileInfo.size)}`,
+        `compress rate: ${Math.round(compressRate * 1000) / 10}%`,
+    ].join(', ');
 }

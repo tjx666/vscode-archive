@@ -3,6 +3,8 @@ import path from 'node:path';
 import type { Uri } from 'vscode';
 import vscode from 'vscode';
 
+import { logger } from './logger';
+
 async function handleCompress(uri: Uri, format: string) {
     const { compress } = await import('./compress');
     const sourcePath = uri.fsPath;
@@ -25,7 +27,7 @@ export function activate(context: vscode.ExtensionContext) {
                 `../${path.basename(archivePath, path.extname(archivePath))}`,
             );
             try {
-                return decompress(archivePath, dest);
+                await decompress(archivePath, dest);
             } catch (error: any) {
                 vscode.window.showErrorMessage(error);
             }
@@ -53,4 +55,8 @@ export function activate(context: vscode.ExtensionContext) {
             handleCompress(uri, 'vsix'),
         ),
     );
+}
+
+export function deactivate() {
+    logger.dispose();
 }
