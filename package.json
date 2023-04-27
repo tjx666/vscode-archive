@@ -187,17 +187,17 @@
         "pretty-bytes": "^6.1.0"
     },
     "devDependencies": {
-        "@types/node": "^18.15.11",
+        "@types/node": "^18.16.1",
         "@types/unzipper": "^0.10.5",
         "@types/vscode": "^1.77.0",
         "@vscode/vsce": "^2.19.0",
-        "@yutengjing/eslint-config-typescript": "^0.2.8",
+        "@yutengjing/eslint-config-typescript": "^0.3.0",
         "@yutengjing/prettier-config": "^0.0.1",
         "bumpp": "^9.1.0",
-        "esbuild": "^0.17.17",
-        "eslint": "^8.38.0",
+        "esbuild": "^0.17.18",
+        "eslint": "^8.39.0",
         "ovsx": "^0.8.0",
-        "prettier": "^2.8.7",
+        "prettier": "^2.8.8",
         "stale-dep": "^0.6.0",
         "typescript": "^5.0.4"
     }
