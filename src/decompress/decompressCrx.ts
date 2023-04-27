@@ -3,7 +3,7 @@ import path from 'node:path';
 
 import jszip from 'jszip';
 
-import { pathExists } from './fsUtils';
+import { pathExists } from '../fsUtils';
 
 /**
  * copy from https://github.com/ddramone/unzip-crx/blob/feat/crx-v3-support/src/index.js

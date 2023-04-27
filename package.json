@@ -24,6 +24,7 @@
         "asar",
         "tgz",
         "gzip",
+        "br",
         "tar"
     ],
     "repository": {
@@ -48,6 +49,10 @@
             {
                 "command": "vscode-archive.compressToGzip",
                 "title": "gzip"
+            },
+            {
+                "command": "vscode-archive.compressToBr",
+                "title": "br"
             },
             {
                 "command": "vscode-archive.compressToTar",
@@ -85,6 +90,10 @@
                     "when": "false"
                 },
                 {
+                    "command": "vscode-archive.compressToBr",
+                    "when": "false"
+                },
+                {
                     "command": "vscode-archive.compressToTar",
                     "when": "false"
                 },
@@ -100,7 +109,7 @@
             "explorer/context": [
                 {
                     "command": "vscode-archive.decompress",
-                    "when": "!explorerResourceIsFolder && resourceFilename =~ /.+\\.(zip|vsix|crx|asar|tgz|gzip|tar)$/i",
+                    "when": "!explorerResourceIsFolder && resourceFilename =~ /.+\\.(zip|vsix|crx|asar|tgz|gzip|tar|br)$/i",
                     "group": "navigation@0"
                 },
                 {
@@ -121,6 +130,11 @@
                 {
                     "command": "vscode-archive.compressToGzip",
                     "group": "compress@3",
+                    "when": "!explorerResourceIsFolder"
+                },
+                {
+                    "command": "vscode-archive.compressToBr",
+                    "group": "compress@6",
                     "when": "!explorerResourceIsFolder"
                 },
                 {

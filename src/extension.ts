@@ -45,6 +45,9 @@ export function activate(context: vscode.ExtensionContext) {
         vscode.commands.registerCommand('vscode-archive.compressToGzip', (uri) =>
             handleCompress(uri, 'gzip'),
         ),
+        vscode.commands.registerCommand('vscode-archive.compressToBr', (uri) =>
+            handleCompress(uri, 'br'),
+        ),
         vscode.commands.registerCommand('vscode-archive.compressToTar', (uri) =>
             handleCompress(uri, 'tar'),
         ),

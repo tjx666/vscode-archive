@@ -3,8 +3,9 @@ import { extname } from 'node:path';
 import asar from 'asar';
 import compressing from 'compressing';
 
-import { analyzeArchive, getFileStats } from './fsUtils';
-import { logger } from './logger';
+import { compressBr } from './compressBr';
+import { analyzeCompress, getFileStats } from '../fsUtils';
+import { logger } from '../logger';
 
 export async function compress(sourcePath: string, archivePath: string) {
     logger.info(`compress from ${sourcePath} to ${archivePath}`);
@@ -26,6 +27,9 @@ export async function compress(sourcePath: string, archivePath: string) {
         case 'gzip':
             await compressing.gzip.compressFile(sourcePath, archivePath, { ignoreBase: true });
             break;
+        case 'br':
+            await compressBr(sourcePath, archivePath);
+            break;
         case 'tar':
             if (isDir) {
                 await compressing.tar.compressDir(sourcePath, archivePath, { ignoreBase: true });
@@ -45,5 +49,5 @@ export async function compress(sourcePath: string, archivePath: string) {
             break;
     }
 
-    logger.info(`compress ${await analyzeArchive(archivePath, sourcePath)}`);
+    logger.info(await analyzeCompress(sourcePath, archivePath));
 }

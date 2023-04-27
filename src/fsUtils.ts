@@ -56,17 +56,33 @@ export async function getFileInfo(filePath: string): Promise<FileInfo> {
     return fileInfo;
 }
 
-export async function analyzeArchive(originalPath: string, archivePath: string) {
+export async function analyzeCompress(originalPath: string, archivePath: string) {
     const [originalFileInfo, archiveFileInfo] = await Promise.all([
         getFileInfo(originalPath),
         getFileInfo(archivePath),
     ]);
 
     const compressRate = (originalFileInfo.size - archiveFileInfo.size) / originalFileInfo.size;
-
     return [
-        `${originalFileInfo.count} files`,
+        `compress contains ${originalFileInfo.count} files`,
         `${prettyBytes(originalFileInfo.size)} -> ${prettyBytes(archiveFileInfo.size)}`,
+        `compress rate: ${Math.round(compressRate * 1000) / 10}%`,
+    ].join(', ');
+}
+
+export async function analyzeDecompress(archivePath: string, originalPath: string) {
+    const [originalFileInfo, archiveFileInfo] = await Promise.all([
+        getFileInfo(originalPath),
+        getFileInfo(archivePath),
+    ]);
+
+    const changeSize = originalFileInfo.size - archiveFileInfo.size;
+    const compressRate = changeSize / originalFileInfo.size;
+    const increaseRate = changeSize / archiveFileInfo.size;
+    return [
+        `decompress extract out ${originalFileInfo.count} files`,
+        `${prettyBytes(archiveFileInfo.size)} -> ${prettyBytes(originalFileInfo.size)}`,
+        `increase rate: ${Math.round(increaseRate * 1000) / 10}%`,
         `compress rate: ${Math.round(compressRate * 1000) / 10}%`,
     ].join(', ');
 }
