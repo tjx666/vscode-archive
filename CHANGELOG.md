@@ -1,5 +1,11 @@
 # Change Log
 
+## [0.5.0] 2023-07-16
+
+### Fixed
+
+- can't recognize gzip when use .gz extension
+
 ## [0.4.0] 2023-04-28
 
 ### Added
