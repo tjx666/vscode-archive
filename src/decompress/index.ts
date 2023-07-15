@@ -22,6 +22,7 @@ export async function decompress(archivePath: string, dest: string) {
             await compressing.tgz.decompress(archivePath, dest);
             break;
         case 'gzip':
+        case 'gz':
             await compressing.gzip.decompress(archivePath, dest);
             break;
         case 'br':

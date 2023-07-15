@@ -109,7 +109,7 @@
             "explorer/context": [
                 {
                     "command": "vscode-archive.decompress",
-                    "when": "!explorerResourceIsFolder && resourceFilename =~ /.+\\.(zip|vsix|crx|asar|tgz|gzip|tar|br)$/i",
+                    "when": "!explorerResourceIsFolder && resourceFilename =~ /.+\\.(zip|vsix|crx|asar|tgz|gzip|gz|tar|br)$/i",
                     "group": "navigation@0"
                 },
                 {
