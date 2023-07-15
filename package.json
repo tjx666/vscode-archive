@@ -6,7 +6,7 @@
     "publisher": "YuTengjing",
     "icon": "./assets/logo.png",
     "engines": {
-        "vscode": "^1.77.0"
+        "vscode": "^1.80.0"
     },
     "categories": [
         "Other"
@@ -187,18 +187,18 @@
         "pretty-bytes": "^6.1.0"
     },
     "devDependencies": {
-        "@types/node": "^18.16.1",
-        "@types/unzipper": "^0.10.5",
-        "@types/vscode": "^1.77.0",
+        "@types/node": "^18.16.19",
+        "@types/unzipper": "^0.10.6",
+        "@types/vscode": "^1.80.0",
         "@vscode/vsce": "^2.19.0",
-        "@yutengjing/eslint-config-typescript": "^0.3.0",
+        "@yutengjing/eslint-config-typescript": "^0.4.2",
         "@yutengjing/prettier-config": "^0.0.1",
-        "bumpp": "^9.1.0",
-        "esbuild": "^0.17.18",
-        "eslint": "^8.39.0",
-        "ovsx": "^0.8.0",
-        "prettier": "^2.8.8",
-        "stale-dep": "^0.6.0",
-        "typescript": "^5.0.4"
+        "bumpp": "^9.1.1",
+        "esbuild": "^0.18.13",
+        "eslint": "^8.45.0",
+        "ovsx": "^0.8.2",
+        "prettier": "^3.0.0",
+        "stale-dep": "^0.7.0",
+        "typescript": "^5.1.6"
     }
 }
