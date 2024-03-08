@@ -57,6 +57,9 @@ export function activate(context: vscode.ExtensionContext) {
         vscode.commands.registerCommand('vscode-archive.compressToVsix', (uri) =>
             handleCompress(uri, 'vsix'),
         ),
+        vscode.commands.registerCommand('vscode-archive.compressToBz2', (uri) =>
+            handleCompress(uri, 'bz2'),
+        ),
     );
 }
 

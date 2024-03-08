@@ -4,6 +4,7 @@ import asar from 'asar';
 import compressing from 'compressing';
 
 import { compressBr } from './compressBr';
+import { compressBz2 } from './compressBz2';
 import { analyzeCompress, getFileStats } from '../fsUtils';
 import { logger } from '../logger';
 
@@ -47,6 +48,8 @@ export async function compress(sourcePath: string, archivePath: string) {
         case 'asar':
             await asar.createPackage(sourcePath, archivePath);
             break;
+        case 'bz2':
+            await compressBz2(sourcePath);
     }
 
     logger.info(await analyzeCompress(sourcePath, archivePath));

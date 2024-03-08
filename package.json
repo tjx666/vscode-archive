@@ -65,6 +65,10 @@
             {
                 "command": "vscode-archive.compressToVsix",
                 "title": "vsix"
+            },
+            {
+                "command": "vscode-archive.compressToBz2",
+                "title": "bz2"
             }
         ],
         "menus": {
@@ -104,12 +108,16 @@
                 {
                     "command": "vscode-archive.compressToVsix",
                     "when": "false"
+                },
+                {
+                    "command": "vscode-archive.compressToBz2",
+                    "when": "false"
                 }
             ],
             "explorer/context": [
                 {
                     "command": "vscode-archive.decompress",
-                    "when": "!explorerResourceIsFolder && resourceFilename =~ /.+\\.(zip|vsix|crx|asar|tgz|gzip|gz|tar|br)$/i",
+                    "when": "!explorerResourceIsFolder && resourceFilename =~ /.+\\.(zip|vsix|crx|asar|tgz|gzip|gz|tar|br|bz2)$/i",
                     "group": "navigation@0"
                 },
                 {
@@ -129,12 +137,12 @@
                 },
                 {
                     "command": "vscode-archive.compressToGzip",
-                    "group": "compress@3",
+                    "group": "compress@2",
                     "when": "!explorerResourceIsFolder"
                 },
                 {
                     "command": "vscode-archive.compressToBr",
-                    "group": "compress@6",
+                    "group": "compress@3",
                     "when": "!explorerResourceIsFolder"
                 },
                 {
@@ -149,6 +157,11 @@
                     "command": "vscode-archive.compressToVsix",
                     "group": "compress@6",
                     "when": "explorerResourceIsFolder"
+                },
+                {
+                    "command": "vscode-archive.compressToBz2",
+                    "group": "compress@7",
+                    "when": "!explorerResourceIsFolder"
                 }
             ]
         },
@@ -183,6 +196,7 @@
     "dependencies": {
         "asar": "^3.2.0",
         "compressing": "^1.10.0",
+        "execa": "^8.0.1",
         "jszip": "^3.10.1",
         "pretty-bytes": "^6.1.1"
     },

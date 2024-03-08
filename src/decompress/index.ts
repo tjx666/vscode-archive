@@ -4,6 +4,7 @@ import asar from 'asar';
 import compressing from 'compressing';
 
 import { decompressBr } from './decompressBr';
+import { decompressBz2 } from './decompressBz2';
 import { decompressCrx } from './decompressCrx';
 import { analyzeDecompress } from '../fsUtils';
 import { logger } from '../logger';
@@ -36,6 +37,9 @@ export async function decompress(archivePath: string, dest: string) {
             break;
         case 'crx':
             await decompressCrx(archivePath, dest);
+            break;
+        case 'bz2':
+            await decompressBz2(archivePath);
             break;
     }
 
