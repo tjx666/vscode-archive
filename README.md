@@ -16,6 +16,16 @@ compress to .zip, .vsix, .asar, .tgz, .gzip, .br, .tar
 
 ![compress](https://github.com/tjx666/vscode-archive/blob/main/assets/compress.png?raw=true)
 
+## Note
+
+### Bzip2
+
+If you want to compress/decompress `bzip2`, the `bzip2` executable program must be installed in your system and can be access from shell.
+
+For MacOS and Linux users, the `bzip2` normally had been installed.
+
+But for windows users, you need to [install it](https://www.google.com/search?q=bzip2+windows).
+
 ## Thanks
 
 - [compressing](https://github.com/node-modules/compressing) provide easy to used api for compress/decompress
@@ -23,6 +33,7 @@ compress to .zip, .vsix, .asar, .tgz, .gzip, .br, .tar
 ## TODO
 
 - [ ] 7-zip decompress/compress
+- [ ] support bzip2(.bz2)
 
 ## My extensions
 
