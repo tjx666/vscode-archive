@@ -1,5 +1,11 @@
 # Change Log
 
+## [0.8.0] 2024-03-09
+
+### Added
+
+- notify user when archive program not installed
+
 ## [0.7.0] 2024-03-09
 
 ### Added
