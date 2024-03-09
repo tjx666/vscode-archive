@@ -1,5 +1,11 @@
 # Change Log
 
+## [0.7.0] 2024-03-09
+
+### Added
+
+- support compress/decompress `7zip`
+
 ## [0.6.2] 2024-03-09
 
 ### Fixed

@@ -20,20 +20,21 @@ compress to .zip, .vsix, .asar, .tgz, .gzip, .br, .tar
 
 ### Bzip2
 
-If you want to compress/decompress `bzip2`, the `bzip2` executable program must be installed in your system and can be access from shell.
+If you want to compress/decompress `bzip2`, the `bzip2` executable program must be installed in your system and can be accessed from shell.
 
-For **MacOS** and **Linux** users, the `bzip2` normally had been installed.
+For **MacOS** and **Linux** users, the `bzip2` normally had been pre-installed by system.
 
 But for **windows** users, you need to [install it](https://www.google.com/search?q=bzip2+windows).
+
+### 7zip
+
+For compress/decompress `7zip`, you need to install `7zip` and make sure executable program `7z` accessible from shell.
+
+You can find `7zip` installation info from [7-zip official website](https://www.7-zip.org/)
 
 ## Thanks
 
 - [compressing](https://github.com/node-modules/compressing) provide easy to used api for compress/decompress
-
-## TODO
-
-- [x] support bzip2(.bz2)
-- [ ] 7-zip decompress/compress
 
 ## My extensions
 
