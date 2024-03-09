@@ -3,6 +3,7 @@ import { extname } from 'node:path';
 import asar from 'asar';
 import compressing from 'compressing';
 
+import { compress7z } from './compress7z';
 import { compressBr } from './compressBr';
 import { compressBz2 } from './compressBz2';
 import { analyzeCompress, getFileStats } from '../fsUtils';
@@ -50,6 +51,10 @@ export async function compress(sourcePath: string, archivePath: string) {
             break;
         case 'bz2':
             await compressBz2(sourcePath);
+            break;
+        case '7z':
+            await compress7z(sourcePath, archivePath);
+            break;
     }
 
     logger.info(await analyzeCompress(sourcePath, archivePath));

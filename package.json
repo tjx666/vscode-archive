@@ -69,6 +69,10 @@
             {
                 "command": "vscode-archive.compressToBz2",
                 "title": "bz2"
+            },
+            {
+                "command": "vscode-archive.compressTo7z",
+                "title": "7z"
             }
         ],
         "menus": {
@@ -112,12 +116,16 @@
                 {
                     "command": "vscode-archive.compressToBz2",
                     "when": "false"
+                },
+                {
+                    "command": "vscode-archive.compressTo7z",
+                    "when": "false"
                 }
             ],
             "explorer/context": [
                 {
                     "command": "vscode-archive.decompress",
-                    "when": "!explorerResourceIsFolder && resourceFilename =~ /.+\\.(zip|vsix|crx|asar|tgz|gzip|gz|tar|br|bz2)$/i",
+                    "when": "!explorerResourceIsFolder && resourceFilename =~ /.+\\.(zip|vsix|crx|asar|tgz|gzip|gz|tar|br|bz2|7z)$/i",
                     "group": "navigation@0"
                 },
                 {
@@ -162,6 +170,10 @@
                     "command": "vscode-archive.compressToBz2",
                     "group": "compress@7",
                     "when": "!explorerResourceIsFolder"
+                },
+                {
+                    "command": "vscode-archive.compressTo7z",
+                    "group": "compress@8"
                 }
             ]
         },

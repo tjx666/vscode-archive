@@ -3,6 +3,7 @@ import path from 'node:path';
 import asar from 'asar';
 import compressing from 'compressing';
 
+import { decompress7z } from './decompress7z';
 import { decompressBr } from './decompressBr';
 import { decompressBz2 } from './decompressBz2';
 import { decompressCrx } from './decompressCrx';
@@ -40,6 +41,9 @@ export async function decompress(archivePath: string, dest: string) {
             break;
         case 'bz2':
             await decompressBz2(archivePath);
+            break;
+        case '7z':
+            await decompress7z(archivePath);
             break;
     }
 
