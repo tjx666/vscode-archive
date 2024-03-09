@@ -25,7 +25,12 @@
         "tgz",
         "gzip",
         "br",
-        "tar"
+        "tar",
+        "bzip2",
+        "bz2",
+        "7zip",
+        "7z",
+        "remote"
     ],
     "repository": {
         "type": "git",
