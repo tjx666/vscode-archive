@@ -16,8 +16,15 @@ export async function pathExists(path: string) {
  * https://github.com/microsoft/vscode/issues/143393#issuecomment-1047518447
  */
 export async function getFileStats(filePath: string) {
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
-    const originalFs = require('original-fs') as typeof FS;
+    let originalFs: typeof FS;
+    try {
+        // eslint-disable-next-line @typescript-eslint/no-var-requires
+        originalFs = require('node:original-fs') as typeof FS;
+    } catch (error) {
+        // FIXME: https://github.com/microsoft/vscode/issues/207221
+        console.error(error);
+        originalFs = require('node:fs');
+    }
     return new Promise<FS.Stats>((resolve, reject) => {
         originalFs.lstat(filePath, (err, stats) => {
             if (err) reject(err);
