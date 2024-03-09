@@ -6,9 +6,9 @@ import jszip from 'jszip';
 import { pathExists } from '../fsUtils';
 
 /**
- * copy from https://github.com/ddramone/unzip-crx/blob/feat/crx-v3-support/src/index.js
- * https://github.com/Rob--W/crxviewer/blob/master/src/lib/crx-to-zip.js
- * Credits for the original function go to Rob--W
+ * Copy from https://github.com/ddramone/unzip-crx/blob/feat/crx-v3-support/src/index.js
+ * https://github.com/Rob--W/crxviewer/blob/master/src/lib/crx-to-zip.js Credits for the original
+ * function go to Rob--W
  */
 function crxToZip(buffer: Buffer) {
     function calcLength(a: number, b: number, c: number, d: number) {
@@ -41,7 +41,7 @@ function crxToZip(buffer: Buffer) {
         throw new Error('Unexpected crx format version number.');
     }
 
-    let zipStartOffset;
+    let zipStartOffset: number;
 
     if (view[4] === 2) {
         const publicKeyLength = calcLength(view[8], view[9], view[10], view[11]);
