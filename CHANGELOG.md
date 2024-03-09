@@ -1,5 +1,17 @@
 # Change Log
 
+## [0.6.2] 2024-03-09
+
+### Fixed
+
+- compression not working in remote sessions #4
+
+## [0.6.0] 2024-03-08
+
+### Added
+
+- support bzip2 compress/decompress
+
 ## [0.5.0] 2023-07-16
 
 ### Fixed

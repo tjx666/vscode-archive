@@ -22,9 +22,9 @@ compress to .zip, .vsix, .asar, .tgz, .gzip, .br, .tar
 
 If you want to compress/decompress `bzip2`, the `bzip2` executable program must be installed in your system and can be access from shell.
 
-For MacOS and Linux users, the `bzip2` normally had been installed.
+For **MacOS** and **Linux** users, the `bzip2` normally had been installed.
 
-But for windows users, you need to [install it](https://www.google.com/search?q=bzip2+windows).
+But for **windows** users, you need to [install it](https://www.google.com/search?q=bzip2+windows).
 
 ## Thanks
 
@@ -32,8 +32,8 @@ But for windows users, you need to [install it](https://www.google.com/search?q=
 
 ## TODO
 
+- [x] support bzip2(.bz2)
 - [ ] 7-zip decompress/compress
-- [ ] support bzip2(.bz2)
 
 ## My extensions
 
