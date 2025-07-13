@@ -1,11 +1,11 @@
 {
     "compilerOptions": {
-        "module": "commonjs",
-        "target": "ES2022",
-        "outDir": "out",
-
+        "composite": true,
         "sourceMap": true,
-        "rootDir": "src",
+
+        /* Basic Options */
+        "target": "ES2022",
+        "module": "commonjs",
 
         /* Strict Type-Checking Options */
         "strict": true,
@@ -26,6 +26,5 @@
         /* Advanced Options */
         "forceConsistentCasingInFileNames": true,
         "skipLibCheck": true
-    },
-    "include": ["src/**/*.ts"]
+    }
 }

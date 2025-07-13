@@ -8,6 +8,7 @@
     "engines": {
         "vscode": "^1.98.0"
     },
+    "packageManager": "pnpm@10.13.0",
     "categories": [
         "Other"
     ],
@@ -198,7 +199,9 @@
         "esbuild:base": "stale-dep && esbuild ./src/extension.ts --bundle --outfile=out/extension.js --external:vscode --external:original-fs --external:original-fs --format=cjs --platform=node --target=ESNext",
         "esbuild:watch": "pnpm esbuild:base --sourcemap --watch",
         "esbuild:analyze": "pnpm esbuild:base --minify --metafile=meta.json && esbuild-visualizer --metadata ./meta.json --open",
-        "lint": "eslint src --ext ts --fix",
+        "compile:test": "pnpm clear && tsc -p ./src/tsconfig.json && tsc -p ./test/tsconfig.json",
+        "lint": "eslint src --ext ts",
+        "test": "pnpm compile:test && node ./out/test/runTests.js",
         "package": "vsce package --no-dependencies",
         "release": "bumpp -c \"release: v%s\" package.json",
         "publish:vs-marketplace": "vsce publish --no-dependencies",
@@ -214,15 +217,20 @@
     },
     "devDependencies": {
         "@types/command-exists": "^1.2.3",
+        "@types/glob": "^9.0.0",
+        "@types/mocha": "^10.0.10",
         "@types/node": "~22.16.3",
         "@types/unzipper": "^0.10.9",
         "@types/vscode": "^1.98.0",
+        "@vscode/test-electron": "^2.5.2",
         "@vscode/vsce": "^3.6.0",
         "@yutengjing/eslint-config-typescript": "^2.6.1",
         "@yutengjing/prettier-config": "^2.0.0",
         "bumpp": "^10.2.0",
         "esbuild": "^0.25.6",
         "eslint": "^9.31.0",
+        "glob": "^11.0.3",
+        "mocha": "^11.7.1",
         "ovsx": "^0.10.5",
         "prettier": "^3.6.2",
         "stale-dep": "^0.8.2",

@@ -2,7 +2,7 @@ import { dirname } from 'node:path';
 
 import { execa } from 'execa';
 
-import { checkAndRun } from '../utils';
+import { checkAndRun } from '../utils/command';
 
 export const command = 'bzip2';
 export async function checkBz2Exists(f: () => void) {

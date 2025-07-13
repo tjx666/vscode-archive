@@ -2,7 +2,7 @@ import { dirname } from 'node:path';
 
 import { execa } from 'execa';
 
-import { checkAndRun } from '../utils';
+import { checkAndRun } from '../utils/command';
 
 export const command = '7z';
 export async function check7zExists(f: () => void) {

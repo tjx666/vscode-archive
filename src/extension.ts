@@ -4,8 +4,9 @@ import type { Uri } from 'vscode';
 import vscode from 'vscode';
 
 import { logger } from './logger';
+import { registerCompressCommand } from './utils/compressionUtils';
 
-async function handleCompress(uri: Uri, format: string) {
+export async function handleCompress(uri: Uri, format: string) {
     const { compress } = await import('./compress');
     const sourcePath = uri.fsPath;
     const archivePath = `${sourcePath}.${format}`;
@@ -34,36 +35,18 @@ export function activate(context: vscode.ExtensionContext) {
         },
     );
 
-    context.subscriptions.push(
-        decompressCmd,
-        vscode.commands.registerCommand('vscode-archive.compressToZip', (uri) =>
-            handleCompress(uri, 'zip'),
-        ),
-        vscode.commands.registerCommand('vscode-archive.compressToAsar', (uri) =>
-            handleCompress(uri, 'asar'),
-        ),
-        vscode.commands.registerCommand('vscode-archive.compressToGzip', (uri) =>
-            handleCompress(uri, 'gzip'),
-        ),
-        vscode.commands.registerCommand('vscode-archive.compressToBr', (uri) =>
-            handleCompress(uri, 'br'),
-        ),
-        vscode.commands.registerCommand('vscode-archive.compressToTar', (uri) =>
-            handleCompress(uri, 'tar'),
-        ),
-        vscode.commands.registerCommand('vscode-archive.compressToTgz', (uri) =>
-            handleCompress(uri, 'tgz'),
-        ),
-        vscode.commands.registerCommand('vscode-archive.compressToVsix', (uri) =>
-            handleCompress(uri, 'vsix'),
-        ),
-        vscode.commands.registerCommand('vscode-archive.compressToBz2', (uri) =>
-            handleCompress(uri, 'bz2'),
-        ),
-        vscode.commands.registerCommand('vscode-archive.compressTo7z', (uri) =>
-            handleCompress(uri, '7z'),
-        ),
-    );
+    context.subscriptions.push(decompressCmd);
+
+    // 注册所有压缩命令
+    registerCompressCommand(context, 'vscode-archive.compressToZip', 'zip');
+    registerCompressCommand(context, 'vscode-archive.compressToAsar', 'asar');
+    registerCompressCommand(context, 'vscode-archive.compressToGzip', 'gzip');
+    registerCompressCommand(context, 'vscode-archive.compressToBr', 'br');
+    registerCompressCommand(context, 'vscode-archive.compressToTar', 'tar');
+    registerCompressCommand(context, 'vscode-archive.compressToTgz', 'tgz');
+    registerCompressCommand(context, 'vscode-archive.compressToVsix', 'vsix');
+    registerCompressCommand(context, 'vscode-archive.compressToBz2', 'bz2');
+    registerCompressCommand(context, 'vscode-archive.compressTo7z', '7z');
 }
 
 export function deactivate() {

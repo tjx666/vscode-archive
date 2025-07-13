@@ -1,5 +1,13 @@
 # VSCode archive
 
+<div align="center">
+
+[![Version](https://img.shields.io/visual-studio-marketplace/v/YuTengjing.vscode-archive)](https://marketplace.visualstudio.com/items/YuTengjing.vscode-archive/changelog) [![Installs](https://img.shields.io/visual-studio-marketplace/i/YuTengjing.vscode-archive)](https://marketplace.visualstudio.com/items?itemName=YuTengjing.vscode-archive) [![Downloads](https://img.shields.io/visual-studio-marketplace/d/YuTengjing.vscode-archive)](https://marketplace.visualstudio.com/items?itemName=YuTengjing.vscode-archive) [![Rating Star](https://img.shields.io/visual-studio-marketplace/stars/YuTengjing.vscode-archive)](https://marketplace.visualstudio.com/items?itemName=YuTengjing.vscode-archive&ssr=false#review-details) [![Last Updated](https://img.shields.io/visual-studio-marketplace/last-updated/YuTengjing.vscode-archive)](https://github.com/tjx666/vscode-archive)
+
+[![CI](https://github.com/tjx666/vscode-archive/actions/workflows/ci.yml/badge.svg)](https://github.com/tjx666/vscode-archive/actions/workflows/test.yml) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat)](http://makeapullrequest.com) [![Github Open Issue](https://img.shields.io/github/issues/tjx666/vscode-archive)](https://github.com/tjx666/vscode-archive/issues) [![LICENSE](https://img.shields.io/badge/license-Anti%20996-blue.svg?style=flat-square)](https://github.com/996icu/996.ICU/blob/master/LICENSE)
+
+</div>
+
 compress/decompress .zip/.vsix/.crx(v3)/.asar/.tgz/.gzip/.br/.tar
 
 ## Feature
@@ -40,7 +48,7 @@ You can find `7zip` installation info from [7-zip official website](https://www.
 
 - [Open in External App](https://github.com/tjx666/open-in-external-app)
 - [Package Manager Enhancer](https://github.com/tjx666/package-manager-enhancer)
-- [Neo File Utils](https://github.com/tjx666/vscode-neo-file-utils)
+- [Neo File Utils](https://github.com/tjx666/vscode-archive)
 - [Reload Can Solve Any Problems](https://github.com/tjx666/reload-can-solve-any-problems)
 - [VSCode FE Helper](https://github.com/tjx666/vscode-fe-helper)
 - [Better Colorizer](https://github.com/tjx666/better-colorizer)
