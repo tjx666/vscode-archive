@@ -3,12 +3,12 @@ import path from 'node:path';
 import asar from 'asar';
 import compressing from 'compressing';
 
+import { analyzeDecompress } from '../fsUtils';
+import { logger } from '../logger';
 import { decompress7z } from './decompress7z';
 import { decompressBr } from './decompressBr';
 import { decompressBz2 } from './decompressBz2';
 import { decompressCrx } from './decompressCrx';
-import { analyzeDecompress } from '../fsUtils';
-import { logger } from '../logger';
 
 export async function decompress(archivePath: string, dest: string) {
     logger.info(`decompress from ${archivePath} to ${dest}`);

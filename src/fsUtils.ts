@@ -1,5 +1,5 @@
-import { constants as FS_CONSTANTS } from 'node:fs';
 import type FS from 'node:fs';
+import { constants as FS_CONSTANTS } from 'node:fs';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 
@@ -18,11 +18,12 @@ export async function pathExists(path: string) {
 export async function getFileStats(filePath: string) {
     let originalFs: typeof FS;
     try {
-        // eslint-disable-next-line @typescript-eslint/no-var-requires
+        // eslint-disable-next-line @typescript-eslint/no-require-imports
         originalFs = require('node:original-fs') as typeof FS;
     } catch (error) {
         // FIXME: https://github.com/microsoft/vscode/issues/207221
         console.error(error);
+        // eslint-disable-next-line @typescript-eslint/no-require-imports
         originalFs = require('node:fs');
     }
     return new Promise<FS.Stats>((resolve, reject) => {

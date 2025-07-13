@@ -3,11 +3,11 @@ import { extname } from 'node:path';
 import asar from 'asar';
 import compressing from 'compressing';
 
+import { analyzeCompress, getFileStats } from '../fsUtils';
+import { logger } from '../logger';
 import { compress7z } from './compress7z';
 import { compressBr } from './compressBr';
 import { compressBz2 } from './compressBz2';
-import { analyzeCompress, getFileStats } from '../fsUtils';
-import { logger } from '../logger';
 
 export async function compress(sourcePath: string, archivePath: string) {
     logger.info(`compress from ${sourcePath} to ${archivePath}`);

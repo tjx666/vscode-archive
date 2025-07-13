@@ -6,7 +6,7 @@
     "publisher": "YuTengjing",
     "icon": "./assets/logo.png",
     "engines": {
-        "vscode": "^1.85.0"
+        "vscode": "^1.98.0"
     },
     "categories": [
         "Other"
@@ -189,12 +189,6 @@
             }
         ]
     },
-    "eslintConfig": {
-        "extends": "@yutengjing/eslint-config-typescript",
-        "rules": {
-            "security/detect-non-literal-fs-filename": 0
-        }
-    },
     "prettier": "@yutengjing/prettier-config",
     "scripts": {
         "vscode:prepublish": "pnpm esbuild:base --minify",
@@ -204,7 +198,7 @@
         "esbuild:base": "stale-dep && esbuild ./src/extension.ts --bundle --outfile=out/extension.js --external:vscode --external:original-fs --external:original-fs --format=cjs --platform=node --target=ESNext",
         "esbuild:watch": "pnpm esbuild:base --sourcemap --watch",
         "esbuild:analyze": "pnpm esbuild:base --minify --metafile=meta.json && esbuild-visualizer --metadata ./meta.json --open",
-        "lint": "eslint src --ext ts",
+        "lint": "eslint src --ext ts --fix",
         "package": "vsce package --no-dependencies",
         "release": "bumpp -c \"release: v%s\" package.json",
         "publish:vs-marketplace": "vsce publish --no-dependencies",
@@ -213,25 +207,25 @@
     "dependencies": {
         "asar": "^3.2.0",
         "command-exists": "^1.2.9",
-        "compressing": "^1.10.0",
-        "execa": "^8.0.1",
+        "compressing": "^1.10.3",
+        "execa": "^9.6.0",
         "jszip": "^3.10.1",
-        "pretty-bytes": "^6.1.1"
+        "pretty-bytes": "^7.0.0"
     },
     "devDependencies": {
         "@types/command-exists": "^1.2.3",
-        "@types/node": "^18.19.22",
+        "@types/node": "~22.16.3",
         "@types/unzipper": "^0.10.9",
-        "@types/vscode": "^1.85.0",
-        "@vscode/vsce": "^2.24.0",
-        "@yutengjing/eslint-config-typescript": "^0.5.2",
-        "@yutengjing/prettier-config": "^1.1.2",
-        "bumpp": "^9.4.0",
-        "esbuild": "^0.20.1",
-        "eslint": "^8.57.0",
-        "ovsx": "^0.8.3",
-        "prettier": "^3.2.5",
-        "stale-dep": "^0.7.0",
-        "typescript": "^5.4.2"
+        "@types/vscode": "^1.98.0",
+        "@vscode/vsce": "^3.6.0",
+        "@yutengjing/eslint-config-typescript": "^2.6.1",
+        "@yutengjing/prettier-config": "^2.0.0",
+        "bumpp": "^10.2.0",
+        "esbuild": "^0.25.6",
+        "eslint": "^9.31.0",
+        "ovsx": "^0.10.5",
+        "prettier": "^3.6.2",
+        "stale-dep": "^0.8.2",
+        "typescript": "~5.8.3"
     }
 }

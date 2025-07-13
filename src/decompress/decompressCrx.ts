@@ -7,8 +7,7 @@ import { pathExists } from '../fsUtils';
 
 /**
  * Copy from https://github.com/ddramone/unzip-crx/blob/feat/crx-v3-support/src/index.js
- * https://github.com/Rob--W/crxviewer/blob/master/src/lib/crx-to-zip.js Credits for the original
- * function go to Rob--W
+ * https://github.com/Rob--W/crxviewer/blob/master/src/lib/crx-to-zip.js Credits for the original function go to Rob--W
  */
 function crxToZip(buffer: Buffer) {
     function calcLength(a: number, b: number, c: number, d: number) {
