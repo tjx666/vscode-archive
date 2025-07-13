@@ -18,11 +18,39 @@ decompress .zip, .vsix, .crx(v3), .asar, .tgz, .gzip, .br, .tar
 
 ![decompress](https://github.com/tjx666/vscode-archive/blob/main/assets/decompress.gif?raw=true)
 
+#### Smart Flatten
+
+Automatically flattens redundant top-level folders that have the same name as the archive. This prevents creating unnecessary nested folders like:
+
+```plaintext
+Before: archive.zip → archive/ → archive/ → files...
+After:  archive.zip → archive/ → files...
+```
+
+This feature is enabled by default and can be controlled via the `vscode-archive.smartFlatten` setting.
+
 ### compress
 
 compress to .zip, .vsix, .asar, .tgz, .gzip, .br, .tar
 
 ![compress](https://github.com/tjx666/vscode-archive/blob/main/assets/compress.png?raw=true)
+
+## Configuration
+
+### Smart Flatten
+
+- **Setting**: `vscode-archive.smartFlatten`
+- **Type**: `boolean`
+- **Default**: `true`
+- **Description**: Automatically flatten single top-level folder with same name as archive to avoid redundant nested folders.
+
+To disable this feature, add the following to your VSCode settings:
+
+```json
+{
+  "vscode-archive.smartFlatten": false
+}
+```
 
 ## Note
 

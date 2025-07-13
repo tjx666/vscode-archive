@@ -1,5 +1,16 @@
 # Change Log
 
+## [0.9.0] 2025-01-13
+
+### Added
+
+- Smart flatten feature: automatically flattens redundant top-level folders with same name as archive
+- Configuration option `vscode-archive.smartFlatten` to control smart flatten behavior (enabled by default)
+
+### Fixed
+
+- Resolved issue with redundant nested folders when extracting archives that contain a single top-level folder matching the archive name
+
 ## [0.8.0] 2024-03-09
 
 ### Added

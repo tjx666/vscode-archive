@@ -39,6 +39,17 @@
     },
     "main": "./out/extension.js",
     "contributes": {
+        "configuration": {
+            "type": "object",
+            "title": "VSCode Archive",
+            "properties": {
+                "vscode-archive.smartFlatten": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Automatically flatten single top-level folder with same name as archive to avoid redundant nested folders."
+                }
+            }
+        },
         "commands": [
             {
                 "command": "vscode-archive.decompress",
