@@ -1,7 +1,7 @@
 import { strictEqual } from 'node:assert';
 import { existsSync, mkdirSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
-import { join } from 'node:path';
+import { join, normalize } from 'node:path';
 
 import vscode from 'vscode';
 
@@ -17,6 +17,31 @@ import {
     getUniqueFileNameSync,
     validateFileName,
 } from '../src/utils/fileUtils';
+
+/**
+ * 规范化路径进行跨平台比较 在 Windows 上将反斜杠转换为正斜杠以保持测试一致性
+ */
+function normalizePath(path: string): string {
+    return normalize(path).replaceAll('\\', '/');
+}
+
+/**
+ * 断言两个路径相等，会先规范化路径格式
+ */
+function assertPathEqual(actual: string | null, expected: string): void {
+    if (actual === null) {
+        strictEqual(actual, expected);
+        return;
+    }
+
+    // 如果期望值是空字符串，直接比较
+    if (expected === '') {
+        strictEqual(actual, expected);
+        return;
+    }
+
+    strictEqual(normalizePath(actual), expected);
+}
 
 describe('fileUtils', () => {
     let testDir: string;
@@ -228,7 +253,7 @@ describe('fileUtils', () => {
         it('should return directory for single file', () => {
             const uris = [createMockUri('/workspace/src/file.js')];
             const result = getCommonDirectory(uris);
-            strictEqual(result, '/workspace/src/file.js');
+            assertPathEqual(result, '/workspace/src/file.js');
         });
 
         it('should find common directory path', () => {
@@ -239,7 +264,7 @@ describe('fileUtils', () => {
             ];
 
             const result = getCommonDirectory(uris);
-            strictEqual(result, '/workspace/project');
+            assertPathEqual(result, '/workspace/project');
         });
 
         it('should handle files with no common directory', () => {
@@ -253,12 +278,12 @@ describe('fileUtils', () => {
     describe('getCommonPath', () => {
         it('should find common path between two identical paths', () => {
             const result = getCommonPath('/workspace/project', '/workspace/project');
-            strictEqual(result, '/workspace/project');
+            assertPathEqual(result, '/workspace/project');
         });
 
         it('should find common path between different paths', () => {
             const result = getCommonPath('/workspace/project/src', '/workspace/project/lib');
-            strictEqual(result, '/workspace/project');
+            assertPathEqual(result, '/workspace/project');
         });
 
         it('should return empty string for completely different paths', () => {
@@ -268,7 +293,7 @@ describe('fileUtils', () => {
 
         it('should handle root paths', () => {
             const result = getCommonPath('/workspace', '/workspace/project');
-            strictEqual(result, '/workspace');
+            assertPathEqual(result, '/workspace');
         });
     });
 
