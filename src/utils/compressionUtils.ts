@@ -97,6 +97,30 @@ export async function handleCompressMultiple(uris: Uri[], format: string) {
 }
 
 /**
+ * Resolve target URIs for the command.
+ *
+ * Explorer context menu invokes the command with `(uri, uris[])`, but a keyboard
+ * shortcut passes no arguments — accessing `args[0].fsPath` then crashes (#8).
+ * Fall back to the active editor's file URI so shortcuts work for the file the
+ * user is editing.
+ */
+function resolveCompressTargets(args: unknown[]): { uri?: Uri; uris?: Uri[] } {
+    const first = args[0] as Uri | undefined;
+    if (first && typeof (first as Uri).fsPath === 'string') {
+        const second = args[1];
+        const uris = Array.isArray(second) ? (second as Uri[]) : undefined;
+        return { uri: first, uris };
+    }
+
+    const activeUri = vscode.window.activeTextEditor?.document.uri;
+    if (activeUri && activeUri.scheme === 'file') {
+        return { uri: activeUri };
+    }
+
+    return {};
+}
+
+/**
  * Register a compression command with unified parameter handling
  */
 export function registerCompressCommand(
@@ -106,15 +130,18 @@ export function registerCompressCommand(
 ) {
     const cmd = vscode.commands.registerCommand(commandId, async (...args) => {
         try {
-            console.log('received args', args);
+            const { uri, uris } = resolveCompressTargets(args);
 
-            if (args.length > 1 && Array.isArray(args[1])) {
-                // 多选情况：需要用户选择文件名
-                const selectedUris: Uri[] = args[1];
-                await handleCompressMultiple(selectedUris, format);
+            if (!uri) {
+                vscode.window.showErrorMessage(
+                    'No file selected. Right-click a file or folder in the Explorer, or open the file in the editor before triggering this command.',
+                );
+                return;
+            }
+
+            if (uris && uris.length > 1) {
+                await handleCompressMultiple(uris, format);
             } else {
-                // 单选情况：使用原有逻辑
-                const uri: Uri = args[0];
                 const { handleCompress } = await import('../extension');
                 await handleCompress(uri, format);
             }

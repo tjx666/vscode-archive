@@ -20,9 +20,25 @@ export async function handleCompress(uri: Uri, format: string) {
 export function activate(context: vscode.ExtensionContext) {
     const decompressCmd = vscode.commands.registerCommand(
         'vscode-archive.decompress',
-        async (archiveUri: Uri) => {
+        async (archiveUri: Uri | undefined) => {
+            // Keyboard shortcuts invoke the command without arguments (#8) —
+            // fall back to the active editor's file URI.
+            let resolvedUri = archiveUri;
+            if (!resolvedUri || typeof resolvedUri.fsPath !== 'string') {
+                const activeUri = vscode.window.activeTextEditor?.document.uri;
+                if (activeUri && activeUri.scheme === 'file') {
+                    resolvedUri = activeUri;
+                }
+            }
+            if (!resolvedUri) {
+                vscode.window.showErrorMessage(
+                    'No archive selected. Right-click an archive in the Explorer, or open the archive file before triggering this command.',
+                );
+                return;
+            }
+
             const { decompress } = await import('./decompress');
-            const archivePath = archiveUri.fsPath;
+            const archivePath = resolvedUri.fsPath;
             const dest = path.resolve(
                 archivePath,
                 `../${path.basename(archivePath, path.extname(archivePath))}`,

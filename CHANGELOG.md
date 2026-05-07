@@ -1,5 +1,11 @@
 # Change Log
 
+## [Unreleased]
+
+### Fixed
+
+- Compress/decompress commands no longer crash with `Cannot read properties of undefined (reading 'fsPath')` when triggered via keyboard shortcut; falls back to the active editor's file or shows a helpful message #8
+
 ## [0.9.0] 2025-01-13
 
 ### Added
